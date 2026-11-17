@@ -9,11 +9,12 @@ both people behave over time: affection, care, requests, boundaries, labeling of
 apologies, plans, endings, and categories specific to the relationship type. Every factor is
 measured for **both** people the same way, so the picture is fair to each side.
 
-It ships in three forms that share one engine:
+It ships in several forms that share one method:
 
 | Form | Where it runs | Use it when |
 |---|---|---|
-| **Claude plugin** (this repository) | Claude Code, Claude Desktop, Cowork | One install: the skill plus the local MCP server |
+| **Directory plugin** (`plugin/`) | claude.ai, Claude Desktop, Claude Code | Instructions and keyword lists only, no code: Claude follows the method with its own code tool on an uploaded export |
+| **Local plugin** (repository root) | Claude Code, Claude Desktop, Cowork | One install: the skill plus the local MCP server |
 | **MCP server** (`behavioral-chat-mcp`) | Claude Desktop, Claude Code, any MCP client | You want Claude to analyze an export on your computer |
 | **Remote connector** (same server over HTTPS) | claude.ai, Claude mobile, Claude Desktop | You host it and list it in the Connectors Directory |
 | **Skill** (`skills/behavioral-chat`) | claude.ai, Claude Desktop, Claude Code | No server: Claude runs the bundled script on an uploaded export |
@@ -84,9 +85,9 @@ sets a boundary *about* sexual content or photos counts as a boundary, not as se
 Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/) for the plugin.
 
 ```bash
-pip install git+https://github.com/sabaazdn73/behavioral-chat@v0.1.0
+pip install git+https://github.com/sabaazdn73/behavioral-chat
 # or run without installing:
-uvx --from git+https://github.com/sabaazdn73/behavioral-chat@v0.1.0 behavioral-chat-mcp
+uvx --from git+https://github.com/sabaazdn73/behavioral-chat behavioral-chat-mcp
 ```
 
 **Claude Desktop** — add to `claude_desktop_config.json`:
@@ -96,20 +97,24 @@ uvx --from git+https://github.com/sabaazdn73/behavioral-chat@v0.1.0 behavioral-c
   "mcpServers": {
     "behavioral-chat": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/sabaazdn73/behavioral-chat@v0.1.0", "behavioral-chat-mcp"],
+      "args": ["--from", "git+https://github.com/sabaazdn73/behavioral-chat", "behavioral-chat-mcp"],
       "env": { "BC_ALLOWED_DIRS": "~/Downloads" }
     }
   }
 }
 ```
 
-**As a Claude plugin (skill + local server)**: once it is listed in the directory, add it from
-Customize in Claude. Until then, use the server or the skill as described below.
+**Directory plugin**: the `plugin/` folder is the version submitted to the Claude directory. It
+contains only a skill, a written method and keyword lists, so it runs anywhere skills run. Once it
+is listed, add it from Customize in Claude.
+
+**Local plugin (skill + local server)**: the repository root is a Claude Code plugin that also
+starts the MCP server with `uv`.
 
 **Claude Code (server only)**:
 
 ```bash
-claude mcp add behavioral-chat -- uvx --from git+https://github.com/sabaazdn73/behavioral-chat@v0.1.0 behavioral-chat-mcp
+claude mcp add behavioral-chat -- uvx --from git+https://github.com/sabaazdn73/behavioral-chat behavioral-chat-mcp
 ```
 
 **Remote connector** (streamable HTTP, stateless; put it behind HTTPS):
