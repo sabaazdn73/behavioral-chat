@@ -37,6 +37,8 @@ Relationship types: romantic, friendship, family, work, other.
 
 ## Privacy Policy
 
+Full policy: [PRIVACY.md](PRIVACY.md).
+
 Behavioral Chat processes only the chat export the user supplies, inside the user's own Claude
 conversation, to compute the analysis shown there. The plugin has no server, stores nothing,
 collects nothing and shares nothing; there are no accounts, cookies, analytics or third parties.
@@ -49,7 +51,7 @@ The open-source engine, a local MCP server and a command-line tool live in the s
 https://github.com/sabaazdn73/behavioral-chat
 
 Questions, feedback, new languages or keyword lists, and collaboration on further development:
-**Saba Azadegan — sabaazad93@gmail.com**.
+**Saba Azadegan — sabaazad93@gmail.com**, or open an issue on GitHub.
 
 ## License
 

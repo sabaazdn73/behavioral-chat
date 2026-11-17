@@ -10,5 +10,15 @@
   "homepage": "https://github.com/sabaazdn73/behavioral-chat",
   "repository": "https://github.com/sabaazdn73/behavioral-chat",
   "license": "MIT",
-  "keywords": ["relationships", "chat analysis", "telegram", "whatsapp", "read-only", "persian"]
+  "keywords": [
+    "relationships",
+    "chat analysis",
+    "telegram",
+    "whatsapp",
+    "read-only",
+    "persian"
+  ],
+  "documentationUrl": "https://github.com/sabaazdn73/behavioral-chat/blob/main/plugin/README.md",
+  "privacyPolicyUrl": "https://github.com/sabaazdn73/behavioral-chat/blob/main/plugin/PRIVACY.md",
+  "supportUrl": "https://github.com/sabaazdn73/behavioral-chat/issues"
 }
