@@ -1,5 +1,3 @@
-<p align="center"><img src="assets/logo.png" alt="Behavioral Chat logo: two people talking" width="128"></p>
-
 # Behavioral Chat
 
 **For love, friends, family and colleagues: read-only, symmetric behaviour analysis of two-person
