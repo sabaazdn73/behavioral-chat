@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/logo-512.png" alt="Behavioral Chat logo: two people talking" width="128"></p>
+
 # Behavioral Chat
 
 **For love, friends, family and colleagues: read-only, symmetric behaviour analysis of two-person chats.**
@@ -11,6 +13,7 @@ It ships in three forms that share one engine:
 
 | Form | Where it runs | Use it when |
 |---|---|---|
+| **Claude plugin** (this repository) | Claude Code, Claude Desktop, Cowork | One install: the skill plus the local MCP server |
 | **MCP server** (`behavioral-chat-mcp`) | Claude Desktop, Claude Code, any MCP client | You want Claude to analyze an export on your computer |
 | **Remote connector** (same server over HTTPS) | claude.ai, Claude mobile, Claude Desktop | You host it and list it in the Connectors Directory |
 | **Skill** (`skills/behavioral-chat`) | claude.ai, Claude Desktop, Claude Code | No server: Claude runs the bundled script on an uploaded export |
@@ -65,14 +68,25 @@ Keywords cover Persian (colloquial), Finglish and English. Persian/Arabic letter
 diacritics, zero-width joiners and stretched letters (جووووون) are normalized first. A message that
 sets a boundary *about* sexual content or photos counts as a boundary, not as sexual content.
 
+## What runs, and what it connects to
+
+- The plugin starts the local MCP server with `uv run --frozen` from `server.py` in this folder.
+  On first start, `uv` installs the Python dependencies pinned in `uv.lock` (`mcp`,
+  `beautifulsoup4` and their dependencies) from PyPI. That is the only network access, and it
+  happens before any chat is read.
+- After that, the server reads only the export file you point it to and returns numbers. It makes
+  no network requests and writes nothing to disk.
+- The skill's `scripts/run_analysis.py` runs the same engine on an uploaded file, also without
+  network access. It writes a JSON or HTML file only where you ask it to.
+
 ## Install
 
-Requires Python 3.10+.
+Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/) for the plugin.
 
 ```bash
-pip install git+https://github.com/sabaazdn73/behavioral-chat
+pip install git+https://github.com/sabaazdn73/behavioral-chat@v0.1.0
 # or run without installing:
-uvx --from git+https://github.com/sabaazdn73/behavioral-chat behavioral-chat-mcp
+uvx --from git+https://github.com/sabaazdn73/behavioral-chat@v0.1.0 behavioral-chat-mcp
 ```
 
 **Claude Desktop** — add to `claude_desktop_config.json`:
@@ -82,17 +96,20 @@ uvx --from git+https://github.com/sabaazdn73/behavioral-chat behavioral-chat-mcp
   "mcpServers": {
     "behavioral-chat": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/sabaazdn73/behavioral-chat", "behavioral-chat-mcp"],
+      "args": ["--from", "git+https://github.com/sabaazdn73/behavioral-chat@v0.1.0", "behavioral-chat-mcp"],
       "env": { "BC_ALLOWED_DIRS": "~/Downloads" }
     }
   }
 }
 ```
 
-**Claude Code**:
+**As a Claude plugin (skill + local server)**: once it is listed in the directory, add it from
+Customize in Claude. Until then, use the server or the skill as described below.
+
+**Claude Code (server only)**:
 
 ```bash
-claude mcp add behavioral-chat -- uvx --from git+https://github.com/sabaazdn73/behavioral-chat behavioral-chat-mcp
+claude mcp add behavioral-chat -- uvx --from git+https://github.com/sabaazdn73/behavioral-chat@v0.1.0 behavioral-chat-mcp
 ```
 
 **Remote connector** (streamable HTTP, stateless; put it behind HTTPS):

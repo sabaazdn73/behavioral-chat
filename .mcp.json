@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "behavioral-chat": {
-      "command": "uvx",
-      "args": ["--from", "git+https://github.com/sabaazdn73/behavioral-chat", "behavioral-chat-mcp"]
+      "command": "uv",
+      "args": ["run", "--frozen", "--project", "${CLAUDE_PLUGIN_ROOT}", "${CLAUDE_PLUGIN_ROOT}/server.py"]
     }
   }
 }

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="t">
+  <title id="t">Behavioral Chat logo: two people talking</title>
+  <rect width="512" height="512" rx="112" fill="#F7F4EE"/>
+  <!-- left speech bubble (person A, blue) -->
+  <path d="M104 72 H224 A40 40 0 0 1 264 112 V152 A40 40 0 0 1 224 192 H158 L122 230 L126 192 H104 A40 40 0 0 1 64 152 V112 A40 40 0 0 1 104 72 Z" fill="#D7E6F8"/>
+  <circle cx="118" cy="132" r="13" fill="#2A78D6"/>
+  <circle cx="164" cy="132" r="13" fill="#2A78D6"/>
+  <circle cx="210" cy="132" r="13" fill="#2A78D6"/>
+  <!-- right speech bubble (person B, orange) with a small rising chart -->
+  <path d="M288 130 H408 A40 40 0 0 1 448 170 V210 A40 40 0 0 1 408 250 H390 L394 288 L358 250 H288 A40 40 0 0 1 248 210 V170 A40 40 0 0 1 288 130 Z" fill="#FBE0D3" stroke="#F7F4EE" stroke-width="8" stroke-linejoin="round"/>
+  <rect x="298" y="196" width="26" height="34" rx="7" fill="#EB6834"/>
+  <rect x="337" y="176" width="26" height="54" rx="7" fill="#EB6834"/>
+  <rect x="376" y="154" width="26" height="76" rx="7" fill="#EB6834"/>
+  <!-- person A -->
+  <circle cx="150" cy="322" r="44" fill="#2A78D6"/>
+  <path d="M70 456 C70 400 106 376 150 376 C194 376 230 400 230 456 Z" fill="#2A78D6"/>
+  <!-- person B -->
+  <circle cx="362" cy="330" r="44" fill="#EB6834"/>
+  <path d="M282 456 C282 408 318 384 362 384 C406 384 442 408 442 456 Z" fill="#EB6834"/>
+</svg>
