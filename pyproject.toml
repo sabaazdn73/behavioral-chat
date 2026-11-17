@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "behavioral-chat"
+version = "0.1.0"
+description = "Read-only, symmetric behaviour analysis of two-person Telegram and WhatsApp chat exports, as an MCP server, skill and CLI."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = ["mcp>=2.0", "beautifulsoup4>=4.12"]
+keywords = ["mcp", "claude", "telegram", "whatsapp", "relationships", "chat-analysis"]
+
+[project.scripts]
+behavioral-chat-mcp = "behavioral_chat.server:main"
+behavioral-chat = "behavioral_chat.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/behavioral_chat"]

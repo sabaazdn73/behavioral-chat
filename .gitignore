@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+dist/
+build/
+*.egg-info/
+.venv/
+skills/behavioral-chat/scripts/behavioral_chat/
+# never commit real chat exports
+*.chat.json
+ChatExport*/
+_chat.txt

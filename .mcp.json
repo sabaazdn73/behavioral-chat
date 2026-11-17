@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "behavioral-chat": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/sabaazdn73/behavioral-chat", "behavioral-chat-mcp"]
+    }
+  }
+}

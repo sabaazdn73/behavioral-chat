@@ -1,0 +1,9 @@
+{
+  "name": "behavioral-chat",
+  "version": "0.1.0",
+  "description": "Read-only, symmetric behaviour analysis of two-person Telegram and WhatsApp chat exports.",
+  "author": { "name": "Saba Azadegan", "email": "sabaazad93@gmail.com" },
+  "homepage": "https://github.com/sabaazdn73/behavioral-chat",
+  "license": "MIT",
+  "keywords": ["relationships", "chat analysis", "telegram", "whatsapp", "read-only"]
+}
